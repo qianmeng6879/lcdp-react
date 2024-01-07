@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+
+.w-100 {
+  width: 100%;
+}
+
+.login .ant-input-group-addon {
+  padding: 0;
+}
