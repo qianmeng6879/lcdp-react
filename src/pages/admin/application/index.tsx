@@ -1,5 +1,5 @@
 import { UploadOutlined } from '@ant-design/icons'
-import { Button, Divider, Upload, UploadFile } from 'antd'
+import { Button, DatePicker, Divider, Upload, UploadFile } from 'antd'
 import { UploadChangeParam } from 'antd/es/upload'
 import { useState } from 'react'
 
@@ -37,6 +37,7 @@ export default function Application() {
             >
                 <Button icon={<UploadOutlined />}>Click to Upload</Button>
             </Upload>
+            <DatePicker onChange={(e) => console.log(e)} />
         </div>
     )
 }

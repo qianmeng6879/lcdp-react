@@ -62,6 +62,10 @@ const initialItems = [
     }
 ];
 
+export interface DataModelMeta {
+    min?: number
+    max?: number
+}
 
 export interface DataModelLine {
     id: string
@@ -69,10 +73,13 @@ export interface DataModelLine {
     type: string
     label: string
     required?: boolean
+    nullTips?: string
+    readonly?: boolean
     maxlength?: number
     note?: string,
     default?: any,
-    options?: any[]
+    options?: any[],
+    meta?: DataModelMeta
 }
 
 const dataModelLineDatSource: DataModelLine[] = [
@@ -83,6 +90,7 @@ const dataModelLineDatSource: DataModelLine[] = [
         label: '用户名',
         required: true,
         maxlength: 10,
+        note: "用户名"
     },
     {
         id: '2',
@@ -119,7 +127,26 @@ const dataModelLineDatSource: DataModelLine[] = [
         type: 'number',
         label: "年龄",
         required: false,
-        note: '年龄'
+        note: '年龄',
+        meta: {
+            min: 1,
+            max: 99
+        }
+    },
+    {
+        id: "5",
+        name: "isAdmin",
+        type: 'boolean',
+        label: "是否管理员",
+        note: "是否管理员"
+    },
+    {
+        id: "6",
+        name: "createTime",
+        type: "datetime",
+        label: "创建时间",
+        required: true,
+        note: "创建时间"
     }
 ]
 
@@ -129,6 +156,10 @@ export default function DataModel() {
     const onChange = (newActiveKey: string) => {
         setActiveKey(newActiveKey);
     };
+
+    const actionSubmit = (data: any) => {
+        console.log(data)
+    }
 
     useEffect(() => {
         const token = PubSub.subscribe("showAppModel", (_: any, data: any) => {
@@ -145,7 +176,7 @@ export default function DataModel() {
             }
             newPanes.push({
                 label: `${data.name}(${data.label})`,
-                children: <DataModelForm data={dataModelLineDatSource} />,
+                children: <DataModelForm onSubmit={actionSubmit} data={dataModelLineDatSource} />,
                 key: newActiveKey,
                 closable: true
             });
