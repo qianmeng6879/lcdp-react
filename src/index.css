@@ -1,21 +1,25 @@
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 li {
-  list-style: none;
+    list-style: none;
 }
 
 
 .w-100 {
-  width: 100%;
+    width: 100%;
 }
 
 .login .ant-input-group-addon {
-  padding: 0;
+    padding: 0;
+}
+
+.bg-white {
+    background-color: white;
 }

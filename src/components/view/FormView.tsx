@@ -1,11 +1,11 @@
-import { Button, Flex, Form, Input } from 'antd'
-import { FormViewProps } from './types'
-import { Fragment, useEffect, useState } from 'react'
+import {Button, Flex, Form, Input} from 'antd'
+import {FormViewProps} from './types'
+import {Fragment, useEffect, useState} from 'react'
 import PubSub from 'pubsub-js'
-import { useSearchParams } from 'react-router-dom'
+import {useSearchParams} from 'react-router-dom'
 
 
-export default function FormView({ columns, onFinish, actionOnSuccess, isEdit }: FormViewProps) {
+export default function FormView({columns, onFinish, actionOnSuccess, isEdit}: FormViewProps) {
     let initData = {}
     const [params, _] = useSearchParams()
     const dataId = params.get("id")
@@ -52,7 +52,7 @@ export default function FormView({ columns, onFinish, actionOnSuccess, isEdit }:
                     return (
                         <Fragment key={index}>
                             <Form.Item name={item.key} label={item.label}>
-                                <Input disabled={item.readonly} />
+                                <Input disabled={item.readonly}/>
                             </Form.Item>
                         </Fragment>
                     )
