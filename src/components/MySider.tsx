@@ -72,6 +72,17 @@ const menus = [
             }
         ]
     },
+    {
+        label: '评论',
+        key: 'comment-group',
+        icon: <AppstoreOutlined />,
+        sub: [
+            {
+                label: '评论',
+                key: '/admin/comment'
+            },
+        ]
+    }
 ]
 
 const items: MenuItem[] = menus.map(item => {

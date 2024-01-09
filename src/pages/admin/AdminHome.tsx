@@ -1,26 +1,26 @@
-import React, {useState} from 'react';
-import {Outlet} from 'react-router-dom'
-import {Layout, theme,} from 'antd';
+import React, { useState } from 'react';
+import { Outlet } from 'react-router-dom'
+import { Layout, theme, } from 'antd';
 import MySider from '@/components/MySider';
 import MyHeader from '@/components/MyHeader';
 
-const {Header, Sider, Content} = Layout;
+const { Header, Sider, Content } = Layout;
 
 
 const App: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
     const {
-        token: {colorBgContainer, borderRadiusLG},
+        token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
 
     return (
         <Layout>
             <Sider trigger={null} collapsible collapsed={collapsed}>
-                <MySider/>
+                <MySider />
             </Sider>
-            <Layout style={{height: '100vh'}}>
-                <Header style={{padding: 0, background: colorBgContainer}}>
-                    <MyHeader collapsed={collapsed} setCollapsed={setCollapsed}/>
+            <Layout style={{ height: '100vh' }}>
+                <Header style={{ height: "42px", lineHeight: "42px", padding: 0, background: colorBgContainer }}>
+                    <MyHeader collapsed={collapsed} setCollapsed={setCollapsed} />
                 </Header>
                 <Content
                     style={{
@@ -30,7 +30,7 @@ const App: React.FC = () => {
                         overflow: 'auto'
                     }}
                 >
-                    <Outlet/>
+                    <Outlet />
                 </Content>
             </Layout>
         </Layout>

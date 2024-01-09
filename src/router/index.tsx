@@ -9,6 +9,7 @@ import Permission from '@/pages/admin/user/Permission'
 import Application from '@/pages/admin/application/Application'
 import Error404 from '@/pages/error/Error404'
 import DataModel from '@/pages/admin/application/DataModel'
+import CommentView from '@/pages/admin/comment/CommentView'
 
 
 const routes: RouteObject[] = [
@@ -48,6 +49,10 @@ const routes: RouteObject[] = [
             {
                 path: "app/model",
                 element: <DataModel />
+            },
+            {
+                path: "comment",
+                element: <CommentView />
             },
             {
                 path: '*',

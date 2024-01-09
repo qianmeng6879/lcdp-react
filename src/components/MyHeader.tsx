@@ -1,7 +1,9 @@
-import { MenuFoldOutlined, MenuUnfoldOutlined, MessageOutlined } from '@ant-design/icons'
-import { Avatar, Badge, Button, Dropdown, Flex, MenuProps } from 'antd'
-
-
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
+import { Avatar, Badge, Button, Drawer, Dropdown, List, MenuProps, notification } from 'antd'
+import { v4 as uuid } from 'uuid'
+import messageImage from "@/assets/message.png"
+import { useEffect, useState } from 'react';
+import { formatDatetime } from '@/utils/date';
 
 const items: MenuProps['items'] = [
     {
@@ -22,33 +24,94 @@ const items: MenuProps['items'] = [
     },
 ];
 
-export default function MyHeader({ collapsed, setCollapsed }: { collapsed: boolean, setCollapsed: Function }) {
+type Message = {
+    id: string
+    fromUser: string
+    title: string
+    content: string
+    msgType: string
+    isRead: boolean
+    createTime: string
+}
+
+
+const initMsgList: Message[] = []
+for (let i = 1; i < 10; i++) {
+    initMsgList.push({
+        id: uuid(),
+        title: "消息" + i,
+        content: uuid() + "内容" + i,
+        fromUser: "系统",
+        msgType: i % 3 === 0 ? "系统消息" : "通知消息",
+        isRead: i > 4,
+        createTime: formatDatetime(new Date).substring(0, 16)
+    })
+}
+
+const MessageItem = ({ item }: { item: Message }) => {
     return (
-        <Flex justify={'space-between'} align={'center'} style={{ paddingRight: '20px' }}>
+        <div>
+            {item.title}|{item.createTime}
+        </div>
+    )
+}
+
+const MessageListCompoent = ({ msgList }: { msgList: Message[] }) => {
+    return (
+        <List
+            dataSource={msgList}
+            renderItem={item => {
+                return (
+                    <List.Item>
+                        <MessageItem item={item} />
+                    </List.Item>
+                )
+            }}
+        />
+    )
+}
+
+export default function MyHeader({ collapsed, setCollapsed }: { collapsed: boolean, setCollapsed: Function }) {
+    const [drawerOpen, setDrawerOpen] = useState(false);
+    const [msgNoReadCount, setMsgNoReadCount] = useState(initMsgList.length)
+
+    useEffect(() => {
+        setMsgNoReadCount(initMsgList.filter(item => !item.isRead).length)
+    }, [])
+
+    return (
+        <div className='flex-between' style={{ paddingRight: '20px' }}>
             <Button
                 type="text"
                 icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                 onClick={() => setCollapsed(!collapsed)}
                 style={{
-                    fontSize: '16px',
-                    width: 64,
-                    height: 64,
+                    fontSize: '14px',
+                    width: 40,
+                    height: 40,
                 }}
             />
-            <Flex>
-                <div style={{ marginRight: '20px', cursor: 'pointer' }}>
-                    <Badge count={5}>
-                        <MessageOutlined style={{ fontSize: "22px" }} />
-                    </Badge>
-                </div>
+            <div className='flex-center'>
+                <a href="#" onClick={() => setDrawerOpen(true)}>
+                    <div className={'flex'} style={{ marginRight: "20px" }}>
+                        <Badge count={msgNoReadCount} style={{ marginRight: '5px', marginTop: "8px" }}>
+                            <img src={messageImage} />
+                        </Badge>
+                    </div>
+                </a>
 
-                <Dropdown menu={{ items }} trigger={['click']}>
-                    <Flex justify={'center'} align={'center'} >
-                        <Avatar size={50} src={'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'} />
-                        <span style={{ fontSize: '16px' }}>Admin</span>
-                    </Flex>
+                <Dropdown menu={{ items }} trigger={['click']} overlayStyle={{
+                    height: "42px"
+                }}>
+                    <div className='flex-center'>
+                        <Avatar size={30} src={'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'} />
+                        <span>Admin</span>
+                    </div>
                 </Dropdown>
-            </Flex>
-        </Flex>
+            </div>
+            <Drawer onClose={() => setDrawerOpen(false)} open={drawerOpen} title='我的消息'>
+                <MessageListCompoent msgList={initMsgList} />
+            </Drawer>
+        </div>
     )
 }
