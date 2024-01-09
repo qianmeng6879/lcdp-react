@@ -25,7 +25,6 @@ const App: React.FC = () => {
                 <Content
                     style={{
                         margin: '24px 16px',
-                        padding: 24,
                         minHeight: 280,
                         borderRadius: borderRadiusLG,
                         overflow: 'auto'

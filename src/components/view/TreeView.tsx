@@ -1,9 +1,9 @@
-import {Button, Divider, Flex, Table, notification} from "antd"
-import {Fragment, useEffect, useState} from "react"
-import {TreeViewProps} from "./types"
+import { Button, Divider, Flex, Table, notification } from "antd"
+import { useEffect, useState } from "react"
+import { TreeViewProps } from "./types"
 import FormView from "./FormView"
-import {useLocation, useSearchParams} from "react-router-dom"
-import {router} from "@/router"
+import { useLocation, useSearchParams } from "react-router-dom"
+import { router } from "@/router"
 import PubSub from 'pubsub-js'
 
 function TreeView(props: TreeViewProps) {
@@ -27,9 +27,8 @@ function TreeView(props: TreeViewProps) {
         const vt = params.get("type") || 'tree'
         setViewType(vt)
 
-        const token = PubSub.subscribe("viewChange", (_: string, {name, data}: { name: string, data: any }) => {
+        const token = PubSub.subscribe("viewChange", (_: string, { name, data }: { name: string, data: any }) => {
             setViewType(name)
-            console.log(data)
             setInitData(data)
             sessionStorage.setItem("initData", JSON.stringify(data))
             setEdit(true)
@@ -54,36 +53,36 @@ function TreeView(props: TreeViewProps) {
 
     const actionOnSuccess = (flag: boolean) => {
         if (flag) {
-            PubSub.publish("formHandleSuccess", {result: true})
-            notification.success({message: "操作成功"})
+            PubSub.publish("formHandleSuccess", { result: true })
+            notification.success({ message: "操作成功" })
             router.navigate(currentRoute.pathname + '?type=tree')
             setViewType("tree")
         } else {
-            notification.error({message: "操作失败"})
+            notification.error({ message: "操作失败" })
         }
     }
 
     return (
-        <Fragment>
+        <div className="bg-white">
             <Flex align={'center'}>
                 <h3>User</h3>
-                <div style={{marginLeft: '15px'}}>
+                <div style={{ marginLeft: '15px' }}>
                     {props.actionAdd && viewType === 'tree' ?
                         <Button onClick={openAddForm} type={"primary"}>新增</Button> : <></>}
                     {viewType === 'form' ? <Button onClick={actionFallback}>返回</Button> : <></>}
                 </div>
             </Flex>
-            <Divider/>
+            <Divider />
             {
                 viewType == 'tree' &&
-                <Table dataSource={props.datas} columns={columns} rowKey={props.rowKey ? props.rowKey : 'id'}/>
+                <Table dataSource={props.datas} columns={columns} rowKey={props.rowKey ? props.rowKey : 'id'} />
             }
             {
                 viewType == 'form' && props.actionAdd ?
                     <FormView isEdit={isEdit} initData={initData} columns={props.columns} onFinish={props.actionAdd}
-                              actionOnSuccess={actionOnSuccess}/> : <></>
+                        actionOnSuccess={actionOnSuccess} /> : <></>
             }
-        </Fragment>
+        </div>
     )
 }
 

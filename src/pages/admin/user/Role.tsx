@@ -42,8 +42,8 @@ const Role: React.FC = () => {
     };
 
     return (
-        <div>
-            <div style={{ marginBottom: 16 }}>
+<div className="bg-white p-10">
+            <div style={{marginBottom: 16}}>
                 <Button onClick={add}>ADD</Button>
             </div>
             <Tabs

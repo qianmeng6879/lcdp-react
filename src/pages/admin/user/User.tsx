@@ -62,6 +62,8 @@ export default function User() {
         }, 500);
     }
     return (
-        <TreeView name='用户列表' actionAdd={actionAdd} datas={initData} columns={columns} rowKey='id' />
+        <div className='bg-white p-10'>
+            <TreeView name='用户列表' actionAdd={actionAdd} datas={initData} columns={columns} rowKey='id' />
+        </div>
     )
 }

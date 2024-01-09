@@ -6,7 +6,7 @@ import Dashboard from '@/pages/admin/Dashboard'
 import User from '@/pages/admin/user/User'
 import Role from '@/pages/admin/user/Role'
 import Permission from '@/pages/admin/user/Permission'
-import Application from '@/pages/admin/application'
+import Application from '@/pages/admin/application/Application'
 import Error404 from '@/pages/error/Error404'
 import DataModel from '@/pages/admin/application/DataModel'
 

@@ -61,7 +61,7 @@ export default function Permission() {
     }, [])
 
     return (
-        <div>
+        <div className='bg-white p-10'>
             <h3>Permission</h3>
 
             <h2>count:{count}</h2>

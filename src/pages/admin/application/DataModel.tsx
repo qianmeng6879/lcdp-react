@@ -218,9 +218,7 @@ export default function DataModel() {
         }
     };
     return (
-        <div>
-            <h3>数据模型</h3>
-            <Divider />
+        <div className='bg-white p-10'>
             <Tabs
                 hideAdd
                 type="editable-card"

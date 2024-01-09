@@ -1,5 +1,5 @@
-import {useEffect, useRef} from "react";
-import {Button, Col, Row, Statistic} from "antd";
+import { useEffect, useRef } from "react";
+import { Button, Col, Row, Statistic } from "antd";
 import * as echarts from 'echarts'
 
 type EchartsModel = {
@@ -63,17 +63,17 @@ export default function Dashboard() {
             },
             toolbox: {
                 feature: {
-                    dataView: {show: true, readOnly: false},
-                    magicType: {show: true, type: ['line', 'bar']},
-                    restore: {show: true},
-                    saveAsImage: {show: true}
+                    dataView: { show: true, readOnly: false },
+                    magicType: { show: true, type: ['line', 'bar'] },
+                    restore: { show: true },
+                    saveAsImage: { show: true }
                 }
             },
             dataset: {
                 dimensions: ['date', 'number'],
                 source: data
             },
-            xAxis: {type: 'category'},
+            xAxis: { type: 'category' },
             yAxis: {},
             series: [
                 {
@@ -82,7 +82,7 @@ export default function Dashboard() {
                     smooth: true,
                     markPoint: {
                         data: [
-                            {type: 'max', name: 'Max'}
+                            { type: 'max', name: 'Max' }
                         ]
                     }
                 }
@@ -107,17 +107,17 @@ export default function Dashboard() {
             },
             toolbox: {
                 feature: {
-                    dataView: {show: true, readOnly: false},
-                    magicType: {show: true, type: ['line', 'bar']},
-                    restore: {show: true},
-                    saveAsImage: {show: true}
+                    dataView: { show: true, readOnly: false },
+                    magicType: { show: true, type: ['line', 'bar'] },
+                    restore: { show: true },
+                    saveAsImage: { show: true }
                 }
             },
             dataset: {
                 dimensions: ['date', 'number'],
                 source: data
             },
-            xAxis: {type: 'category'},
+            xAxis: { type: 'category' },
             yAxis: {},
             series: [
                 {
@@ -126,7 +126,7 @@ export default function Dashboard() {
                     smooth: true,
                     markPoint: {
                         data: [
-                            {type: 'max', name: 'Max'}
+                            { type: 'max', name: 'Max' }
                         ]
                     }
                 }
@@ -137,31 +137,28 @@ export default function Dashboard() {
 
     return (
         <div>
-            <Row gutter={16}>
-                <Col span={5} className={'bg-white'}>
-                    <Statistic title="Active Users" value={112893}/>
+            <Row>
+                <Col span={4} offset={1} className={'bg-white p-10'}>
+                    <Statistic title="Active Users" value={112893} />
                 </Col>
-                <Col span={5} offset={1} className={'bg-white'}>
-                    <Statistic title="Account Balance (CNY)" value={112893} precision={2}/>
-                    <Button style={{marginTop: 16}} type="primary">
-                        Recharge
-                    </Button>
+                <Col span={4} offset={2} className={'bg-white p-10'}>
+                    <Statistic title="Account Balance (CNY)" value={112893} precision={2} />
                 </Col>
-                <Col span={5} offset={1} className={'bg-white'}>
-                    <Statistic title="Active Users" value={112893} loading/>
+                <Col span={4} offset={2} className={'bg-white p-10'}>
+                    <Statistic title="Active Users" value={112893} loading />
                 </Col>
-                <Col span={5} offset={1} className={'bg-white'}>
-                    <Statistic title="Active Users" value={112893}/>
+                <Col span={4} offset={2} className={'bg-white p-10'}>
+                    <Statistic title="Active Users" value={112893} />
                 </Col>
             </Row>
 
-            <Row style={{'marginTop': "30px"}}>
+            <Row style={{ 'marginTop': "30px" }}>
                 <Col span={10} offset={1}>
-                    <div style={{backgroundColor: 'white', width: "100%", height: '400px'}} ref={graph_1}>
+                    <div style={{ backgroundColor: 'white', width: "100%", height: '400px' }} ref={graph_1}>
                     </div>
                 </Col>
                 <Col span={10} offset={2}>
-                    <div style={{backgroundColor: 'white', width: "100%", height: '400px'}} ref={graph_2}>
+                    <div style={{ backgroundColor: 'white', width: "100%", height: '400px' }} ref={graph_2}>
                     </div>
                 </Col>
             </Row>

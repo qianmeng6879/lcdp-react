@@ -15,20 +15,8 @@ export default function Application() {
         }
     }
     return (
-        <div>
-            <h3>Application</h3>
-            <Divider />
-            <ul>
-                {
-                    filenameList.map(name => {
-                        return (
-                            <li key={name}>
-                                {name}
-                            </li>
-                        )
-                    })
-                }
-            </ul>
+        <div className='bg-white p-10'>
+            <h3>应用</h3>
             <Divider />
             <Upload action='http://127.0.0.1:5000/upload'
                 name='file'
