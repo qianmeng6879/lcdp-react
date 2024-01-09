@@ -10,6 +10,7 @@ import Application from '@/pages/admin/application/Application'
 import Error404 from '@/pages/error/Error404'
 import DataModel from '@/pages/admin/application/DataModel'
 import CommentView from '@/pages/admin/comment/CommentView'
+import AclView from '@/pages/admin/user/AclView'
 
 
 const routes: RouteObject[] = [
@@ -40,6 +41,10 @@ const routes: RouteObject[] = [
             {
                 path: 'permission',
                 element: <Permission />
+            },
+            {
+                path: 'acl',
+                element: <AclView />
             },
             {
                 path: "app",

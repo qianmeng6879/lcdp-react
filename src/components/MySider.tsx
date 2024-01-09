@@ -54,6 +54,10 @@ const menus = [
             {
                 label: '权限',
                 key: '/admin/permission'
+            },
+            {
+                label: 'ACL',
+                key: '/admin/acl'
             }
         ]
     },
