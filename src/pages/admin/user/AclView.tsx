@@ -106,7 +106,7 @@ export default function AclView() {
                 <Button type="primary" onClick={() => setShowModal(true)}>新增</Button>
             </div>
             <Table dataSource={dataSource} rowKey={"id"} columns={columns} />
-            <Modal onCancel={() => setShowModal(false)} destroyOnClose footer={false} title='新增ACL规则' open={showModal} mask>
+            <Modal maskClosable={false} onCancel={() => setShowModal(false)} destroyOnClose footer={false} title='新增ACL规则' open={showModal} >
                 <Form onFinish={actionOnFinish} labelCol={{ span: 4 }} autoComplete="off" initialValues={{
                     methodGet: true,
                     methodOptions: true,
