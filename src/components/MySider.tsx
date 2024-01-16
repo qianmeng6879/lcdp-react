@@ -86,7 +86,13 @@ const menus = [
                 key: '/admin/comment'
             },
         ]
+    },
+    {
+        label: '文件上传',
+        key: '/admin/file/upload',
+        icon: <AppstoreOutlined />
     }
+
 ]
 
 const items: MenuItem[] = menus.map(item => {

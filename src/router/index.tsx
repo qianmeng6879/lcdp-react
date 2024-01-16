@@ -11,6 +11,7 @@ import Error404 from '@/pages/error/Error404'
 import DataModel from '@/pages/admin/application/DataModel'
 import CommentView from '@/pages/admin/comment/CommentView'
 import AclView from '@/pages/admin/user/AclView'
+import FileUploadPage from '@/pages/admin/FileUploadPage'
 
 
 const routes: RouteObject[] = [
@@ -58,6 +59,10 @@ const routes: RouteObject[] = [
             {
                 path: "comment",
                 element: <CommentView />
+            },
+            {
+                path: 'file/upload',
+                element: <FileUploadPage />
             },
             {
                 path: '*',
