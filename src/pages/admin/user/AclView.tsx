@@ -93,6 +93,11 @@ const columns = [
     },
 ]
 
+
+const tableLineStyle = {
+    width: "80px", textAlign: "center"
+}
+
 export default function AclView() {
     const [dataSource, setDataSource] = useState(initData)
     const [showModal, setShowModal] = useState(false)
@@ -122,12 +127,24 @@ export default function AclView() {
                     <Form.Item name={'userGroup'} label='用户组' rules={[{ required: true, message: "用户组为空" }]}>
                         <Input />
                     </Form.Item>
-                    <Form.Item name={'methodGet'} label='GET'><Switch /></Form.Item>
-                    <Form.Item name={'methodPost'} label='POST'><Switch /></Form.Item>
-                    <Form.Item name={'methodPut'} label='PUT'><Switch /></Form.Item>
-                    <Form.Item name={'methodPatch'} label='PATCh'><Switch /></Form.Item>
-                    <Form.Item name={'methodDelete'} label='DELETE'><Switch /></Form.Item>
-                    <Form.Item name={'methodOptions'} label='OPTIONS'><Switch /></Form.Item>
+                    <table>
+                        <tr>
+                            <th style={tableLineStyle}>GET</th>
+                            <th style={tableLineStyle}>POST</th>
+                            <th style={tableLineStyle}>PUT</th>
+                            <th style={tableLineStyle}>PATCh</th>
+                            <th style={tableLineStyle}>DELETE</th>
+                            <th style={tableLineStyle}>OPTIONS</th>
+                        </tr>
+                        <tr>
+                            <td style={tableLineStyle}><Form.Item name={'methodGet'}><Switch /></Form.Item></td>
+                            <td style={tableLineStyle}><Form.Item name={'methodPost'}><Switch /></Form.Item></td>
+                            <td style={tableLineStyle}><Form.Item name={'methodPut'}><Switch /></Form.Item></td>
+                            <td style={tableLineStyle}><Form.Item name={'methodPatch'}><Switch /></Form.Item></td>
+                            <td style={tableLineStyle}><Form.Item name={'methodDelete'}><Switch /></Form.Item></td>
+                            <td style={tableLineStyle}><Form.Item name={'methodOptions'}><Switch /></Form.Item></td>
+                        </tr>
+                    </table>
                     <Form.Item name={'notes'} label='备注'>
                         <Input />
                     </Form.Item>
