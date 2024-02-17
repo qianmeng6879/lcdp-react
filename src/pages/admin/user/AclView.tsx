@@ -1,5 +1,5 @@
 import { Button, Form, Input, Modal, Switch, Table, Tag } from "antd"
-import { useState } from "react"
+import { CSSProperties, useState } from "react"
 import { v4 as uuid } from 'uuid'
 type AclType = {
     id: string
@@ -94,9 +94,7 @@ const columns = [
 ]
 
 
-const tableLineStyle = {
-    width: "80px", textAlign: "center"
-}
+
 
 export default function AclView() {
     const [dataSource, setDataSource] = useState(initData)
@@ -105,6 +103,12 @@ export default function AclView() {
         setDataSource([...dataSource, { ...result, id: uuid() }])
         setShowModal(false)
     }
+
+    const tableLineStyle: CSSProperties = {
+        width: "80px",
+        textAlign: "center"
+    }
+
     return (
         <div className="bg-white p-10">
             <div>

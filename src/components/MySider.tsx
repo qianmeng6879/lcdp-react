@@ -1,7 +1,11 @@
 import {
     DashboardFilled,
     UserOutlined,
-    AppstoreOutlined
+    CommentOutlined,
+    AppstoreOutlined,
+    FileOutlined,
+    SettingOutlined,
+    Html5Outlined
 } from '@ant-design/icons';
 import { Menu } from 'antd';
 import type { MenuProps } from 'antd/es/menu';
@@ -41,7 +45,7 @@ const menus = [
     {
         label: "系统",
         key: 'system-group',
-        icon: <UserOutlined />,
+        icon: <SettingOutlined />,
         sub: [
             {
                 label: "用户",
@@ -79,7 +83,7 @@ const menus = [
     {
         label: '评论',
         key: 'comment-group',
-        icon: <AppstoreOutlined />,
+        icon: <CommentOutlined />,
         sub: [
             {
                 label: '评论',
@@ -90,7 +94,12 @@ const menus = [
     {
         label: '文件上传',
         key: '/admin/file/upload',
-        icon: <AppstoreOutlined />
+        icon: <FileOutlined />
+    },
+    {
+        label: '页面编辑',
+        key: '/admin/page/edit',
+        icon: <Html5Outlined />
     }
 
 ]

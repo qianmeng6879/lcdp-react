@@ -12,6 +12,7 @@ import DataModel from '@/pages/admin/application/DataModel'
 import CommentView from '@/pages/admin/comment/CommentView'
 import AclView from '@/pages/admin/user/AclView'
 import FileUploadPage from '@/pages/admin/FileUploadPage'
+import EditPage from '@/pages/viewPage/EditPage'
 
 
 const routes: RouteObject[] = [
@@ -51,7 +52,6 @@ const routes: RouteObject[] = [
                 path: "app",
                 element: <Application />
             },
-
             {
                 path: "app/model",
                 element: <DataModel />
@@ -63,6 +63,10 @@ const routes: RouteObject[] = [
             {
                 path: 'file/upload',
                 element: <FileUploadPage />
+            },
+            {
+                path: 'page/edit',
+                element: <EditPage />
             },
             {
                 path: '*',
